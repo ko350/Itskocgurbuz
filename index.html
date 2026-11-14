@@ -3,289 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>itskocgurbuz | Küçük Tasarımcı</title>
-    <meta name="description" content="itskocgurbuz; küçük yaşta dijital tasarım ve yayıncılıkla uğraşan, itsB0lg topluluğunun tasarımcısı.">
-    <meta name="keywords" content="itskocgurbuz, itsB0lg, Kick, tasarımcı, grafik, topluluk">
-    <meta name="author" content="itskocgurbuz">
-
-    <!-- Google & AI Arama Motorları İçin Yapılandırılmış Veri -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "itskocgurbuz",
-      "jobTitle": "Küçük Dijital Tasarımcı",
-      "description": "Kick yayıncısı itsB0lg topluluğunun genç ve yetenekli tasarımcısı.",
-      "sameAs": [
-        "https://kick.com/itskocgurbuz",
-        "https://kick.com/itsB0lg",
-        "https://discord.gg/bolg",
-        "https://www.instagram.com/itsbolg",
-        "https://youtube.com/@emirhanbolgun"
-      ]
-    }
-    </script>
-
+    <title>itsbolgi</title>
     <style>
-        :root {
-            --red: #ff0033;
-            --red-glow: rgba(255, 0, 51, 0.3);
-            --bg-dark: #050203;
-            --card-bg: rgba(12, 5, 7, 0.88);
-            --border-color: rgba(255, 0, 51, 0.25);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: #f4f4f5;
+            background-color: #030101;
+            color: #e0e0e0;
+            font-family: 'Courier New', Courier, monospace;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
-            background-image: 
-                linear-gradient(to bottom, rgba(5, 2, 3, 0.7), rgba(5, 2, 3, 0.95)),
-                url('image_5d9921.jpg');
+            background-image: linear-gradient(rgba(3, 1, 1, 0.78), rgba(3, 1, 1, 0.94)), url('bg.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-            overflow-x: hidden;
+            background-repeat: no-repeat;
         }
 
-        .card {
-            position: relative;
-            background: var(--card-bg);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid var(--border-color);
-            border-radius: 22px;
-            padding: 36px 26px;
+        .container {
             width: 100%;
-            max-width: 440px;
+            max-width: 400px;
+            background: rgba(8, 2, 3, 0.92);
+            border: 1px solid #ff0033;
+            padding: 30px 20px;
+            box-shadow: 0 0 25px rgba(255, 0, 51, 0.25);
+        }
+
+        .header {
             text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 0, 51, 0.15);
-            animation: fadeIn 0.6s ease-out;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 0, 51, 0.3);
+            padding-bottom: 20px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
         }
 
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            padding: 5px 12px;
-            border-radius: 99px;
-            font-size: 11px;
-            font-weight: 600;
-            color: #d4d4d8;
-            letter-spacing: 0.5px;
-            margin-bottom: 22px;
-            text-transform: uppercase;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--red);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--red);
-            animation: pulse 1.8s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.8; }
-        }
-
-        .avatar-wrapper {
-            position: relative;
-            width: 104px;
-            height: 104px;
-            margin: 0 auto 18px;
-        }
-
-        .avatar {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: linear-gradient(145deg, #18080b, #0e0406);
-            border: 2.5px solid var(--red);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 34px;
-            font-weight: 900;
-            color: var(--red);
-            letter-spacing: 1.5px;
-            box-shadow: 0 0 25px var(--red-glow);
-        }
-
-        h1 {
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
-            background: linear-gradient(to right, #ffffff, #d4d4d8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .badge {
-            display: inline-block;
-            background: rgba(255, 0, 51, 0.12);
-            color: var(--red);
-            border: 1px solid rgba(255, 0, 51, 0.35);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .bio {
-            color: #d4d4d8;
-            font-size: 14px;
-            line-height: 1.65;
-            margin-bottom: 22px;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 26px;
-        }
-
-        .tag {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #e4e4e7;
+        .subtitle {
             font-size: 12px;
-            font-weight: 500;
-            padding: 5px 11px;
-            border-radius: 8px;
+            color: #ff0033;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .links {
+        .menu {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-        }
-
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             gap: 10px;
+        }
+
+        .link-btn {
+            display: block;
+            width: 100%;
+            background: #110305;
+            color: #ffffff;
             text-decoration: none;
-            background: rgba(255, 255, 255, 0.04);
+            padding: 12px 15px;
+            border: 1px solid #3a0d14;
+            font-size: 13px;
+            text-align: center;
+            transition: all 0.2s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .link-btn:hover, .link-btn:active {
+            background: #ff0033;
+            color: #000000;
+            border-color: #ff0033;
+            font-weight: bold;
+        }
+
+        details {
+            border: 1px solid #3a0d14;
+            background: #110305;
+        }
+
+        summary {
+            padding: 12px 15px;
+            font-size: 13px;
+            color: #ff4d6d;
+            cursor: pointer;
+            text-align: center;
+            list-style: none;
+            letter-spacing: 0.5px;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:hover {
+            background: rgba(255, 0, 51, 0.1);
             color: #ffffff;
-            padding: 14px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .btn:hover, .btn:active {
-            border-color: var(--red);
-            background: rgba(255, 0, 51, 0.08);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        .sub-links {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid #3a0d14;
         }
 
-        .btn.kick-primary {
-            background: var(--red);
+        .sub-btn {
+            display: block;
+            padding: 10px 15px;
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 12px;
+            border-bottom: 1px solid rgba(58, 13, 20, 0.4);
+            transition: 0.2s;
+        }
+
+        .sub-btn:hover, .sub-btn:active {
+            background: rgba(255, 0, 51, 0.15);
             color: #ffffff;
-            border: none;
-            font-weight: 800;
-            box-shadow: 0 4px 20px var(--red-glow);
-        }
-
-        .btn.kick-primary:hover, .btn.kick-primary:active {
-            background: extracellular;
-            background: #e6002e;
-            box-shadow: 0 6px 25px rgba(255, 0, 51, 0.5);
+            padding-left: 20px;
         }
 
         .footer {
-            margin-top: 28px;
-            padding-top: 18px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            font-size: 12px;
-            color: #71717a;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer span {
-            color: #a1a1aa;
-            font-weight: 600;
+            margin-top: 25px;
+            text-align: center;
+            font-size: 10px;
+            color: #666666;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <div class="status-pill">
-            <span class="dot"></span>
-            HOŞGELDİNİZ
+    <div class="container">
+        <div class="header">
+            <div class="title">itsbolgi</div>
+            <div class="subtitle">İzleyici & Küçük Tasarımcı</div>
         </div>
 
-        <div class="avatar-wrapper">
-            <div class="avatar">IK</div>
-        </div>
+        <div class="menu">
+            <a href="https://kick.com/itskocgurbuz" target="_blank" class="link-btn">KICK / itskocgurbuz</a>
+            <a href="https://kick.com/itsB0lg" target="_blank" class="link-btn">KICK / itsB0lg</a>
 
-        <h1>itskocgurbuz</h1>
-        <div class="badge">🎨 Küçük Tasarımcı & Genç Yetenek</div>
-
-        <p class="bio">
-            Genç yaşta dijital tasarım dünyasına adım atan, <strong>itsB0lg</strong> topluluğunun tasarımcısı ve içerik üreticisiyim. Görsel tasarımlar ve yayın kültürü burada!
-        </p>
-
-        <div class="tags">
-            <span class="tag">⚡ Grafik & Tasarım</span>
-            <span class="tag">🔥 Genç Yetenek</span>
-            <span class="tag">🔴 itsB0lg Ekibi</span>
-        </div>
-
-        <div class="links">
-            <a href="https://kick.com/itskocgurbuz" target="_blank" class="btn kick-primary">
-                👤 Kick Profilim (itskocgurbuz)
-            </a>
-            <a href="https://discord.gg/bolg" target="_blank" class="btn">
-                🎮 Discord Sunucusu
-            </a>
-            <a href="https://www.instagram.com/itsbolg" target="_blank" class="btn">
-                📸 Instagram (@itsbolg)
-            </a>
-            <a href="https://www.instagram.com/dyt.emirhanbolgun?psln=Z2EydXZreWRza3g2" target="_blank" class="btn">
-                📸 Instagram (@dyt.emirhanbolgun)
-            </a>
-            <a href="https://youtube.com/@emirhanbolgun?si=o-TwaSK8aywSzCMk" target="_blank" class="btn">
-                ▶️ YouTube Kanalı
-            </a>
+            <details>
+                <summary>+ KÜÇÜK TASARIMCI & SOSYAL</summary>
+                <div class="sub-links">
+                    <a href="https://discord.gg/bolg" target="_blank" class="sub-btn">> Discord Sunucusu</a>
+                    <a href="https://www.instagram.com/itsbolg" target="_blank" class="sub-btn">> Instagram (@itsbolg)</a>
+                    <a href="https://www.instagram.com/dyt.emirhanbolgun?psln=Z2EydXZreWRza3g2" target="_blank" class="sub-btn">> Instagram (@dyt.emirhanbolgun)</a>
+                    <a href="https://youtube.com/@emirhanbolgun?si=o-TwaSK8aywSzCMk" target="_blank" class="sub-btn">> YouTube Kanalı</a>
+                </div>
+            </details>
         </div>
 
         <div class="footer">
-            <span>© 2026 itskocgurbuz</span>
-            <span>Tasarım Vitrini</span>
+            [ ITSBOLGI // 2026 ]
         </div>
     </div>
 
