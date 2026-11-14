@@ -3,38 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>itskocgurbuz | Official</title>
-    <meta name="description" content="itskocgurbuz; Kick yayıncısı itsB0lg’nin yayınlarının demirbaşı, sadık izleyicisi ve topluluk üyesidir.">
-    <meta name="keywords" content="itskocgurbuz, itsB0lg, Kick, yayıncı, topluluk, tasarım">
+    <title>itskocgurbuz | Küçük Tasarımcı</title>
+    <meta name="description" content="itskocgurbuz; küçük yaşta dijital tasarım ve yayıncılıkla uğraşan, itsB0lg topluluğunun tasarımcısı.">
+    <meta name="keywords" content="itskocgurbuz, itsB0lg, Kick, tasarımcı, grafik, topluluk">
     <meta name="author" content="itskocgurbuz">
+
+    <!-- Google & AI Arama Motorları İçin Yapılandırılmış Veri -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "itskocgurbuz",
+      "jobTitle": "Küçük Dijital Tasarımcı",
+      "description": "Kick yayıncısı itsB0lg topluluğunun genç ve yetenekli tasarımcısı.",
+      "sameAs": [
+        "https://kick.com/itskocgurbuz",
+        "https://kick.com/itsB0lg",
+        "https://discord.gg/bolg",
+        "https://www.instagram.com/itsbolg",
+        "https://youtube.com/@emirhanbolgun"
+      ]
+    }
+    </script>
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #09090b; color: #f4f4f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; background-image: radial-gradient(circle at top, #18181b 0%, #09090b 70%); }
-        .card { background: #121215; border: 1px solid #27272a; border-radius: 16px; padding: 40px 30px; width: 90%; max-width: 440px; text-align: center; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(83, 252, 24, 0.08); }
-        .avatar { width: 100px; height: 100px; border-radius: 50%; background: #18181b; border: 3px solid #53fc18; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 800; color: #53fc18; letter-spacing: 1px; box-shadow: 0 0 15px rgba(83, 252, 24, 0.3); }
-        h1 { font-size: 28px; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 8px; }
-        .badge { display: inline-block; background: rgba(83, 252, 24, 0.12); color: #53fc18; border: 1px solid rgba(83, 252, 24, 0.3); padding: 5px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 24px; }
-        .bio { color: #a1a1aa; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
-        .links { display: flex; flex-direction: column; gap: 12px; }
-        .btn { display: block; text-decoration: none; background: #18181b; color: #ffffff; padding: 14px; border-radius: 10px; border: 1px solid #27272a; font-weight: 600; font-size: 15px; transition: all 0.2s ease; }
-        .btn:hover { border-color: #53fc18; background: #1e1e24; transform: translateY(-2px); }
-        .btn.kick { background: #53fc18; color: #09090b; border: none; font-weight: 700; }
-        .btn.kick:hover { background: #45d612; }
-        .footer { margin-top: 28px; font-size: 12px; color: #52525b; }
+        :root {
+            --red: #ff0033;
+            --red-glow: rgba(255, 0, 51, 0.3);
+            --bg-dark: #050203;
+            --card-bg: rgba(12, 5, 7, 0.88);
+            --border-color: rgba(255, 0, 51, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #f4f4f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            background-image: 
+                linear-gradient(to bottom, rgba(5, 2, 3, 0.7), rgba(5, 2, 3, 0.95)),
+                url('image_5d9921.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        .card {
+            position: relative;
+            background: var(--card-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-color);
+            border-radius: 22px;
+            padding: 36px 26px;
+            width: 100%;
+            max-width: 440px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 0, 51, 0.15);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 5px 12px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #d4d4d8;
+            letter-spacing: 0.5px;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--red);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--red);
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            width: 104px;
+            height: 104px;
+            margin: 0 auto 18px;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #18080b, #0e0406);
+            border: 2.5px solid var(--red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            font-weight: 900;
+            color: var(--red);
+            letter-spacing: 1.5px;
+            box-shadow: 0 0 25px var(--red-glow);
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(to right, #ffffff, #d4d4d8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 0, 51, 0.12);
+            color: var(--red);
+            border: 1px solid rgba(255, 0, 51, 0.35);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .bio {
+            color: #d4d4d8;
+            font-size: 14px;
+            line-height: 1.65;
+            margin-bottom: 22px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 26px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #e4e4e7;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 5px 11px;
+            border-radius: 8px;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.04);
+            color: #ffffff;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn:hover, .btn:active {
+            border-color: var(--red);
+            background: rgba(255, 0, 51, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn.kick-primary {
+            background: var(--red);
+            color: #ffffff;
+            border: none;
+            font-weight: 800;
+            box-shadow: 0 4px 20px var(--red-glow);
+        }
+
+        .btn.kick-primary:hover, .btn.kick-primary:active {
+            background: extracellular;
+            background: #e6002e;
+            box-shadow: 0 6px 25px rgba(255, 0, 51, 0.5);
+        }
+
+        .footer {
+            margin-top: 28px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 12px;
+            color: #71717a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer span {
+            color: #a1a1aa;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
+
     <div class="card">
-        <div class="avatar">IK</div>
-        <h1>itskocgurbuz</h1>
-        <div class="badge">itsB0lg Kemik Kadro</div>
-        <p class="bio">itskocgurbuz; Kick yayıncısı itsB0lg’nin yayınlarının demirbaşı, sadık izleyicisi ve topluluk üyesidir. Tasarım, oyun ve yayın kültürü burada buluşuyor.</p>
-        <div class="links">
-            <a href="https://kick.com/itsB0lg" target="_blank" class="btn kick">itsB0lg Kick Kanalına Git</a>
-            <a href="https://kick.com/itskocgurbuz" target="_blank" class="btn">Kick Profilim (itskocgurbuz)</a>
-            <a href="#" class="btn">Discord & Topluluk</a>
+        <div class="status-pill">
+            <span class="dot"></span>
+            HOŞGELDİNİZ
         </div>
-        <div class="footer">© 2026 itskocgurbuz</div>
+
+        <div class="avatar-wrapper">
+            <div class="avatar">IK</div>
+        </div>
+
+        <h1>itskocgurbuz</h1>
+        <div class="badge">🎨 Küçük Tasarımcı & Genç Yetenek</div>
+
+        <p class="bio">
+            Genç yaşta dijital tasarım dünyasına adım atan, <strong>itsB0lg</strong> topluluğunun tasarımcısı ve içerik üreticisiyim. Görsel tasarımlar ve yayın kültürü burada!
+        </p>
+
+        <div class="tags">
+            <span class="tag">⚡ Grafik & Tasarım</span>
+            <span class="tag">🔥 Genç Yetenek</span>
+            <span class="tag">🔴 itsB0lg Ekibi</span>
+        </div>
+
+        <div class="links">
+            <a href="https://kick.com/itskocgurbuz" target="_blank" class="btn kick-primary">
+                👤 Kick Profilim (itskocgurbuz)
+            </a>
+            <a href="https://discord.gg/bolg" target="_blank" class="btn">
+                🎮 Discord Sunucusu
+            </a>
+            <a href="https://www.instagram.com/itsbolg" target="_blank" class="btn">
+                📸 Instagram (@itsbolg)
+            </a>
+            <a href="https://www.instagram.com/dyt.emirhanbolgun?psln=Z2EydXZreWRza3g2" target="_blank" class="btn">
+                📸 Instagram (@dyt.emirhanbolgun)
+            </a>
+            <a href="https://youtube.com/@emirhanbolgun?si=o-TwaSK8aywSzCMk" target="_blank" class="btn">
+                ▶️ YouTube Kanalı
+            </a>
+        </div>
+
+        <div class="footer">
+            <span>© 2026 itskocgurbuz</span>
+            <span>Tasarım Vitrini</span>
+        </div>
     </div>
+
 </body>
 </html>
