@@ -1,9 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>itsbolgi</title>
+    <meta name="theme-color" content="#080507">
+    <meta name="description" content="itsb0lg - Her yayın yeni bir hikâye, her an kendi izini bırakır.">
+    <title>İtsB0lg | Official</title>
+
     <style>
         * {
             margin: 0;
@@ -11,92 +15,261 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --red: #ff1744;
+            --red-soft: #ff4569;
+            --bg: #080507;
+            --text: #f5f0f2;
+            --muted: #92858a;
+        }
+
         body {
-            background-color: #030101;
-            color: #e0e0e0;
-            font-family: 'Courier New', Courier, monospace;
+            min-height: 100vh;
+            padding: 35px 18px;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            background-image: linear-gradient(rgba(3, 1, 1, 0.78), rgba(3, 1, 1, 0.94)), url('bg.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            font-family: 'Courier New', monospace;
+            color: var(--text);
+            background:
+                linear-gradient(rgba(8,5,7,.82), rgba(8,5,7,.96)),
+                url('bg.jpg') center / cover fixed;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            background: var(--red);
+            filter: blur(180px);
+            opacity: .12;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
         }
 
         .container {
             width: 100%;
-            max-width: 400px;
-            background: rgba(8, 2, 3, 0.92);
-            border: 1px solid #ff0033;
-            padding: 30px 20px;
-            box-shadow: 0 0 25px rgba(255, 0, 51, 0.25);
+            max-width: 470px;
+            position: relative;
+            padding: 34px 25px;
+            background: rgba(13, 8, 11, .88);
+            border: 1px solid rgba(255,23,68,.35);
+            border-radius: 18px;
+            backdrop-filter: blur(18px);
+            box-shadow:
+                0 0 50px rgba(255,0,50,.09),
+                inset 0 0 30px rgba(255,0,50,.025);
+            animation: appear .8s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .top-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 35px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: var(--muted);
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #ff4569;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--red);
+            box-shadow: 0 0 10px var(--red);
+            animation: pulse 1.7s infinite;
+        }
+
+        @keyframes pulse {
+            50% { opacity: .35; }
+        }
+
+        /* YAYIN DURUMU */
+
+        .status.live {
+            color: #ff4569;
+        }
+
+        .status.offline {
+            color: #888;
+        }
+
+        .status.offline .status-dot {
+            background: #888;
+            box-shadow: none;
+            animation: none;
+        }
+
+        .status.unknown {
+            color: #d6a94b;
+        }
+
+        .status.unknown .status-dot {
+            background: #d6a94b;
+            box-shadow: none;
+            animation: none;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 25px;
-            border-bottom: 1px solid rgba(255, 0, 51, 0.3);
-            padding-bottom: 20px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255,23,68,.2);
         }
 
-        .title {
-            font-size: 26px;
-            font-weight: bold;
-            color: #ffffff;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
+        .logo {
+            font-family: Arial, sans-serif;
+            font-size: clamp(38px, 10vw, 54px);
+            font-weight: 900;
+            letter-spacing: -2px;
+            color: white;
+            text-shadow: 0 0 25px rgba(255,23,68,.25);
+        }
+
+        .logo span {
+            color: var(--red);
         }
 
         .subtitle {
-            font-size: 12px;
-            color: #ff0033;
+            margin-top: 12px;
+            color: var(--red-soft);
+            font-size: 11px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+        }
+
+        /* GÜNCEL TAKİPÇİ */
+
+        .followers {
+            margin-top: 16px;
+            color: var(--muted);
+            font-size: 11px;
+            letter-spacing: 1.5px;
+        }
+
+        .followers span {
+            color: var(--red-soft);
+            font-weight: bold;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+
+        .description {
+            margin-top: 17px;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.8;
+            letter-spacing: .5px;
+        }
+
+        .section-title {
+            margin: 27px 0 13px;
+            color: #a99ba0;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .menu {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 11px;
         }
 
         .link-btn {
-            display: block;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             width: 100%;
-            background: #110305;
-            color: #ffffff;
+            padding: 16px 17px;
+            color: white;
             text-decoration: none;
-            padding: 12px 15px;
-            border: 1px solid #3a0d14;
-            font-size: 13px;
-            text-align: center;
-            transition: all 0.2s ease;
-            letter-spacing: 0.5px;
+            font-size: 12px;
+            letter-spacing: .8px;
+            background: linear-gradient(110deg, #190b10, #10090c);
+            border: 1px solid #35121d;
+            border-radius: 9px;
+            transition: .25s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .link-btn:hover, .link-btn:active {
-            background: #ff0033;
-            color: #000000;
-            border-color: #ff0033;
-            font-weight: bold;
+        .link-btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,23,68,.1), transparent);
+            transform: translateX(-100%);
+            transition: .5s;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-3px);
+            border-color: var(--red);
+            box-shadow: 0 5px 22px rgba(255,23,68,.15);
+            background: #200b12;
+        }
+
+        .link-btn:hover::before {
+            transform: translateX(100%);
+        }
+
+        .link-name, .arrow {
+            position: relative;
+            z-index: 1;
+        }
+
+        .arrow {
+            color: var(--red);
+            font-size: 17px;
+            transition: .2s;
+        }
+
+        .link-btn:hover .arrow {
+            transform: translateX(5px);
         }
 
         details {
-            border: 1px solid #3a0d14;
-            background: #110305;
+            margin-top: 18px;
+            border: 1px solid rgba(255,23,68,.35);
+            border-radius: 9px;
+            background: rgba(255,23,68,.035);
+            overflow: hidden;
         }
 
         summary {
-            padding: 12px 15px;
-            font-size: 13px;
-            color: #ff4d6d;
+            padding: 17px;
             cursor: pointer;
-            text-align: center;
             list-style: none;
-            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--red-soft);
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            transition: .25s;
         }
 
         summary::-webkit-details-marker {
@@ -104,68 +277,265 @@
         }
 
         summary:hover {
-            background: rgba(255, 0, 51, 0.1);
-            color: #ffffff;
+            background: rgba(255,23,68,.08);
+            color: white;
+        }
+
+        summary .arrow {
+            transition: transform .3s;
+        }
+
+        details[open] summary .arrow {
+            transform: rotate(90deg);
         }
 
         .sub-links {
+            padding: 5px 12px 12px;
             display: flex;
             flex-direction: column;
-            border-top: 1px solid #3a0d14;
+            gap: 7px;
+            border-top: 1px solid rgba(255,23,68,.15);
         }
 
         .sub-btn {
-            display: block;
-            padding: 10px 15px;
-            color: #b0b0b0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 13px 12px;
+            color: #b8aeb2;
             text-decoration: none;
-            font-size: 12px;
-            border-bottom: 1px solid rgba(58, 13, 20, 0.4);
-            transition: 0.2s;
+            font-size: 11px;
+            border-radius: 6px;
+            transition: .2s;
         }
 
-        .sub-btn:hover, .sub-btn:active {
-            background: rgba(255, 0, 51, 0.15);
-            color: #ffffff;
-            padding-left: 20px;
+        .sub-btn:hover {
+            color: white;
+            background: rgba(255,23,68,.12);
+            padding-left: 18px;
         }
 
         .footer {
-            margin-top: 25px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,23,68,.15);
             text-align: center;
-            font-size: 10px;
-            color: #666666;
+        }
+
+        .footer-brand {
+            color: #e7dce0;
+            font-size: 11px;
+            letter-spacing: 3px;
+        }
+
+        .footer-text {
+            margin-top: 9px;
+            color: #65575d;
+            font-size: 9px;
             letter-spacing: 1px;
+        }
+
+        @media(max-width: 400px) {
+            .container {
+                padding: 27px 17px;
+            }
+
+            .link-btn {
+                padding: 15px 12px;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="container">
-        <div class="header">
-            <div class="title">itsbolgi</div>
-            <div class="subtitle">İzleyici & Küçük Tasarımcı</div>
+    <main class="container">
+
+        <div class="top-line">
+            <span>PERSONAL SPACE</span>
+
+            <div class="status unknown" id="streamStatus">
+                <span class="status-dot"></span>
+                <span id="statusText">CHECKING...</span>
+            </div>
         </div>
 
-        <div class="menu">
-            <a href="https://kick.com/itskocgurbuz" target="_blank" class="link-btn">KICK / itskocgurbuz</a>
-            <a href="https://kick.com/itsB0lg" target="_blank" class="link-btn">KICK / itsB0lg</a>
+        <header class="header">
+            <div class="logo">its<span>bolgi</span></div>
 
-            <details>
-                <summary>+ KÜÇÜK TASARIMCI & SOSYAL</summary>
-                <div class="sub-links">
-                    <a href="https://discord.gg/bolg" target="_blank" class="sub-btn">> Discord Sunucusu</a>
-                    <a href="https://www.instagram.com/itsbolg" target="_blank" class="sub-btn">> Instagram (@itsbolg)</a>
-                    <a href="https://www.instagram.com/dyt.emirhanbolgun?psln=Z2EydXZreWRza3g2" target="_blank" class="sub-btn">> Instagram (@dyt.emirhanbolgun)</a>
-                    <a href="https://youtube.com/@emirhanbolgun?si=o-TwaSK8aywSzCMk" target="_blank" class="sub-btn">> YouTube Kanalı</a>
-                </div>
-            </details>
-        </div>
+            <div class="subtitle">
+                İzleyici & Küçük Tasarımcı & Yayıncı
+            </div>
 
-        <div class="footer">
-            [ ITSBOLGI // 2026 ]
-        </div>
-    </div>
+            <div class="followers">
+                GÜNCEL TAKİPÇİ
+                <span id="followerCount">Yükleniyor...</span>
+            </div>
+
+            <p class="description">
+                Dijital dünyada kendi izini bırakan küçük bir yolculuk.
+                <br>
+                Welcome to my space.
+            </p>
+        </header>
+
+        <div class="section-title">// Ana bağlantılar</div>
+
+        <nav class="menu">
+
+            <a href="https://kick.com/itsB0lg"
+               target="_blank" rel="noopener noreferrer"
+               class="link-btn">
+                <span class="link-name">KICK / itsB0lg</span>
+                <span class="arrow">↗</span>
+            </a>
+
+            <a href="https://discord.gg/bolg"
+               target="_blank" rel="noopener noreferrer"
+               class="link-btn">
+                <span class="link-name">DISCORD / Community</span>
+                <span class="arrow">↗</span>
+            </a>
+
+            <a href="https://www.instagram.com/itsbolg"
+               target="_blank" rel="noopener noreferrer"
+               class="link-btn">
+                <span class="link-name">INSTAGRAM / @itsbolg</span>
+                <span class="arrow">↗</span>
+            </a>
+
+            <a href="https://www.instagram.com/dyt.emirhanbolgun?psln=Z2EydXZreWRza3g2"
+               target="_blank" rel="noopener noreferrer"
+               class="link-btn">
+                <span class="link-name">INSTAGRAM / @dyt.emirhanbolgun</span>
+                <span class="arrow">↗</span>
+            </a>
+
+            <a href="https://youtube.com/@emirhanbolgun?si=o-TwaSK8aywSzCMk"
+               target="_blank" rel="noopener noreferrer"
+               class="link-btn">
+                <span class="link-name">YOUTUBE / Channel</span>
+                <span class="arrow">↗</span>
+            </a>
+
+        </nav>
+
+        <details>
+            <summary>
+                <span>+ DİĞER BAĞLANTILAR</span>
+                <span class="arrow">›</span>
+            </summary>
+
+            <div class="sub-links">
+
+                <a href="https://kick.com/itskocgurbuz"
+                   target="_blank" rel="noopener noreferrer"
+                   class="sub-btn">
+                    KICK / itskocgurbuz
+                    <span>↗</span>
+                </a>
+
+            </div>
+        </details>
+
+        <footer class="footer">
+            <div class="footer-brand">ITSBOLG</div>
+            <div class="footer-text">
+                INDEPENDENTLY CREATED // 2026
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        const channel = "itsB0lg";
+
+        const statusBox = document.getElementById("streamStatus");
+        const statusText = document.getElementById("statusText");
+        const followerCount = document.getElementById("followerCount");
+
+        // YAYIN DURUMU KONTROLÜ
+
+        async function checkStream() {
+            try {
+                const response = await fetch(
+                    `https://kick.com/api/v2/channels/${channel}/livestream`,
+                    { cache: "no-store" }
+                );
+
+                if (response.status === 404) {
+                    setStatus("offline");
+                    return;
+                }
+
+                if (!response.ok) {
+                    throw new Error("Status unavailable");
+                }
+
+                const result = await response.json();
+                const stream = result.data ?? result;
+
+                if (stream && stream.id) {
+                    setStatus("live");
+                } else {
+                    setStatus("offline");
+                }
+
+            } catch (error) {
+                setStatus("unknown");
+            }
+        }
+
+        function setStatus(state) {
+            statusBox.className = "status " + state;
+
+            if (state === "live") {
+                statusText.textContent = "LIVE NOW";
+            } else if (state === "offline") {
+                statusText.textContent = "OFFLINE";
+            } else {
+                statusText.textContent = "STATUS UNKNOWN";
+            }
+        }
+
+        // GÜNCEL TAKİPÇİ SAYISI
+
+        async function getFollowers() {
+            try {
+                const response = await fetch(
+                    `https://kick.com/api/v2/channels/${channel}`,
+                    { cache: "no-store" }
+                );
+
+                if (!response.ok) {
+                    throw new Error("Follower data unavailable");
+                }
+
+                const data = await response.json();
+
+                const count = Number(
+                    data.followers_count ??
+                    data.data?.followers_count
+                );
+
+                if (!Number.isFinite(count)) {
+                    throw new Error("Invalid follower count");
+                }
+
+                followerCount.textContent =
+                    count.toLocaleString("tr-TR");
+
+            } catch (error) {
+                followerCount.textContent = "Şu an alınamıyor";
+            }
+        }
+
+        checkStream();
+        getFollowers();
+
+        setInterval(checkStream, 60000);
+        setInterval(getFollowers, 300000);
+    </script>
 
 </body>
 </html>
