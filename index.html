@@ -81,10 +81,58 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 35px;
+            margin-bottom: 20px;
             font-size: 10px;
             letter-spacing: 2px;
             color: var(--muted);
+        }
+
+        /* YENİ: HIZLI İŞLEVSEL ARAÇLAR (QR & HIZLI MENÜ) */
+        .utility-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .utility-btn {
+            flex: 1;
+            padding: 8px;
+            background: rgba(255,23,68,.06);
+            border: 1px solid rgba(255,23,68,.25);
+            border-radius: 6px;
+            color: var(--red-soft);
+            font-size: 9px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-align: center;
+            transition: .2s;
+            font-family: 'Courier New', monospace;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .utility-btn:hover {
+            background: rgba(255,23,68,.15);
+            color: white;
+            border-color: var(--red);
+        }
+
+        /* YENİ: ANLIK CANLI DURUM BANDI */
+        .live-status-banner {
+            background: rgba(255,23,68,.08);
+            border-left: 3px solid var(--red);
+            padding: 10px 14px;
+            border-radius: 4px;
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: #ffb3c1;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .status {
@@ -107,35 +155,15 @@
             50% { opacity: .35; }
         }
 
-        /* YAYIN DURUMU */
-
-        .status.live {
-            color: #ff4569;
-        }
-
-        .status.offline {
-            color: #888;
-        }
-
-        .status.offline .status-dot {
-            background: #888;
-            box-shadow: none;
-            animation: none;
-        }
-
-        .status.unknown {
-            color: #d6a94b;
-        }
-
-        .status.unknown .status-dot {
-            background: #d6a94b;
-            box-shadow: none;
-            animation: none;
-        }
+        .status.live { color: #ff4569; }
+        .status.offline { color: #888; }
+        .status.offline .status-dot { background: #888; box-shadow: none; animation: none; }
+        .status.unknown { color: #d6a94b; }
+        .status.unknown .status-dot { background: #d6a94b; box-shadow: none; animation: none; }
 
         .header {
             text-align: center;
-            padding-bottom: 30px;
+            padding-bottom: 25px;
             border-bottom: 1px solid rgba(255,23,68,.2);
         }
 
@@ -153,17 +181,15 @@
         }
 
         .subtitle {
-            margin-top: 12px;
+            margin-top: 10px;
             color: var(--red-soft);
             font-size: 11px;
             letter-spacing: 3px;
             text-transform: uppercase;
         }
 
-        /* GÜNCEL TAKİPÇİ */
-
         .followers {
-            margin-top: 16px;
+            margin-top: 14px;
             color: var(--muted);
             font-size: 11px;
             letter-spacing: 1.5px;
@@ -177,7 +203,7 @@
         }
 
         .description {
-            margin-top: 17px;
+            margin-top: 15px;
             color: var(--muted);
             font-size: 11px;
             line-height: 1.8;
@@ -185,7 +211,7 @@
         }
 
         .section-title {
-            margin: 27px 0 13px;
+            margin: 25px 0 13px;
             color: #a99ba0;
             font-size: 10px;
             letter-spacing: 2px;
@@ -214,6 +240,7 @@
             transition: .25s ease;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .link-btn::before {
@@ -272,22 +299,15 @@
             transition: .25s;
         }
 
-        summary::-webkit-details-marker {
-            display: none;
-        }
+        summary::-webkit-details-marker { display: none; }
 
         summary:hover {
             background: rgba(255,23,68,.08);
             color: white;
         }
 
-        summary .arrow {
-            transition: transform .3s;
-        }
-
-        details[open] summary .arrow {
-            transform: rotate(90deg);
-        }
+        summary .arrow { transition: transform .3s; }
+        details[open] summary .arrow { transform: rotate(90deg); }
 
         .sub-links {
             padding: 5px 12px 12px;
@@ -315,6 +335,64 @@
             padding-left: 18px;
         }
 
+        /* YENİ: KOPYALANDI BİLDİRİM TOAST MESAJI */
+        #toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #190b10;
+            border: 1px solid var(--red);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            box-shadow: 0 0 20px rgba(255,23,68,.3);
+            transition: transform 0.3s ease;
+            z-index: 999;
+        }
+        #toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* YENİ: QR MODALI */
+        #qrModal {
+            position: fixed;
+            inset: 0;
+            background: rgba(8,5,7,.9);
+            backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .qr-box {
+            background: #13080b;
+            border: 1px solid var(--red);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255,23,68,.2);
+        }
+        .qr-box p {
+            color: var(--red-soft);
+            font-size: 11px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .close-qr {
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: var(--red);
+            border: none;
+            color: white;
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
         .footer {
             margin-top: 30px;
             padding-top: 20px;
@@ -336,13 +414,8 @@
         }
 
         @media(max-width: 400px) {
-            .container {
-                padding: 27px 17px;
-            }
-
-            .link-btn {
-                padding: 15px 12px;
-            }
+            .container { padding: 27px 17px; }
+            .link-btn { padding: 15px 12px; }
         }
     </style>
 </head>
@@ -360,13 +433,22 @@
             </div>
         </div>
 
+        <!-- HIZLI İŞLEVSEL ARAÇLAR ÇUBUĞU -->
+        <div class="utility-bar">
+            <button class="utility-btn" onclick="copyToClipboard('itsB0lg')">📋 KOPYALA: İSİM</button>
+            <button class="utility-btn" onclick="toggleQR()">📱 QR KOD</button>
+        </div>
+
+        <!-- ANLIK CANLI DURUM BANDI -->
+        <div class="live-status-banner">
+            <span id="activityStatus">Sistem durumu kontrol ediliyor...</span>
+            <span style="font-size: 14px;">⚡</span>
+        </div>
+
         <header class="header">
             <div class="logo">its<span>B0lg</span></div>
         
-
-            <div class="subtitle">
-                    Yayıncı
-            </div>
+            <div class="subtitle">Yayıncı</div>
 
             <div class="followers">
                 GÜNCEL TAKİPÇİ
@@ -384,37 +466,27 @@
 
         <nav class="menu">
 
-            <a href="https://kick.com/itsB0lg"
-               target="_blank" rel="noopener noreferrer"
-               class="link-btn">
+            <a href="https://kick.com/itsB0lg" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span class="link-name">KICK / itsB0lg</span>
                 <span class="arrow">↗</span>
             </a>
 
-            <a href="https://discord.gg/bolg"
-               target="_blank" rel="noopener noreferrer"
-               class="link-btn">
+            <a href="https://discord.gg/bolg" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span class="link-name">DISCORD / Community</span>
                 <span class="arrow">↗</span>
             </a>
 
-            <a href="https://www.instagram.com/itsbolg"
-               target="_blank" rel="noopener noreferrer"
-               class="link-btn">
+            <a href="https://www.instagram.com/itsbolg" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span class="link-name">INSTAGRAM / @itsbolg</span>
                 <span class="arrow">↗</span>
             </a>
 
-            <a href="https://www.instagram.com/dyt.emirhanbolgun?psln=Z2EydXZreWRza3g2"
-               target="_blank" rel="noopener noreferrer"
-               class="link-btn">
+            <a href="https://www.instagram.com/dyt.emirhanbolgun?psln=Z2EydXZreWRza3g2" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span class="link-name">INSTAGRAM / @dyt.emirhanbolgun</span>
                 <span class="arrow">↗</span>
             </a>
 
-            <a href="https://youtube.com/@emirhanbolgun?si=o-TwaSK8aywSzCMk"
-               target="_blank" rel="noopener noreferrer"
-               class="link-btn">
+            <a href="https://youtube.com/@emirhanbolgun?si=o-TwaSK8aywSzCMk" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span class="link-name">YOUTUBE / Channel</span>
                 <span class="arrow">↗</span>
             </a>
@@ -428,25 +500,32 @@
             </summary>
 
             <div class="sub-links">
-
-                <a href="https://kick.com/itskocgurbuz"
-                   target="_blank" rel="noopener noreferrer"
-                   class="sub-btn">
+                <a href="https://kick.com/itskocgurbuz" target="_blank" rel="noopener noreferrer" class="sub-btn">
                     KICK / itskocgurbuz
                     <span>↗</span>
                 </a>
-
             </div>
         </details>
 
         <footer class="footer">
             <div class="footer-brand">ITSBOLG</div>
-            <div class="footer-text">
-                INDEPENDENTLY CREATED // 2026
-            </div>
+            <div class="footer-text">INDEPENDENTLY CREATED // 2026</div>
         </footer>
 
     </main>
+
+    <!-- BİLDİRİM TOAST -->
+    <div id="toast">PANOYA KOPYALANDI // B0LG</div>
+
+    <!-- QR MODAL -->
+    <div id="qrModal" onclick="toggleQR()">
+        <div class="qr-box" onclick="event.stopPropagation()">
+            <p>// MOBİL HIZLI ERİŞİM</p>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kick.com/itsB0lg&color=ff1744&bgcolor=13080b" alt="QR Code" style="border-radius:6px;">
+            <br>
+            <button class="close-qr" onclick="toggleQR()">KAPAT</button>
+        </div>
+    </div>
 
     <script>
         const channel = "itsB0lg";
@@ -454,9 +533,25 @@
         const statusBox = document.getElementById("streamStatus");
         const statusText = document.getElementById("statusText");
         const followerCount = document.getElementById("followerCount");
+        const activityStatus = document.getElementById("activityStatus");
 
-        // YAYIN DURUMU KONTROLÜ
+        // TEK TIKLA KOPYALA FONKSİYONU
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text);
+            const toast = document.getElementById("toast");
+            toast.classList.add("show");
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 2000);
+        }
 
+        // QR MODAL AÇ/KAPAT
+        function toggleQR() {
+            const modal = document.getElementById("qrModal");
+            modal.style.display = modal.style.display === "flex" ? "none" : "flex";
+        }
+
+        // YAYIN DURUMU VE CANLI AKTİVİTE KONTROLÜ
         async function checkStream() {
             try {
                 const response = await fetch(
@@ -469,9 +564,7 @@
                     return;
                 }
 
-                if (!response.ok) {
-                    throw new Error("Status unavailable");
-                }
+                if (!response.ok) throw new Error("Status unavailable");
 
                 const result = await response.json();
                 const stream = result.data ?? result;
@@ -492,15 +585,17 @@
 
             if (state === "live") {
                 statusText.textContent = "LIVE NOW";
+                activityStatus.textContent = "🔥 YAYINDA! Sohbet ve oyun akıyor.";
             } else if (state === "offline") {
                 statusText.textContent = "OFFLINE";
+                activityStatus.textContent = "💤 Çevrimdışı - Yeni yayın saatlerini takip et.";
             } else {
                 statusText.textContent = "STATUS UNKNOWN";
+                activityStatus.textContent = "📡 Sistem bağlantısı kuruluyor...";
             }
         }
 
         // GÜNCEL TAKİPÇİ SAYISI
-
         async function getFollowers() {
             try {
                 const response = await fetch(
@@ -508,23 +603,14 @@
                     { cache: "no-store" }
                 );
 
-                if (!response.ok) {
-                    throw new Error("Follower data unavailable");
-                }
+                if (!response.ok) throw new Error("Follower data unavailable");
 
                 const data = await response.json();
+                const count = Number(data.followers_count ?? data.data?.followers_count);
 
-                const count = Number(
-                    data.followers_count ??
-                    data.data?.followers_count
-                );
+                if (!Number.isFinite(count)) throw new Error("Invalid follower count");
 
-                if (!Number.isFinite(count)) {
-                    throw new Error("Invalid follower count");
-                }
-
-                followerCount.textContent =
-                    count.toLocaleString("tr-TR");
+                followerCount.textContent = count.toLocaleString("tr-TR");
 
             } catch (error) {
                 followerCount.textContent = "Şu an alınamıyor";
