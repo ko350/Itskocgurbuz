@@ -8,7 +8,7 @@
     <title>ITSBOLG | Official</title>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
         * {
             margin: 0;
@@ -78,13 +78,49 @@
             }
         }
 
-        /* MÜZİK KONTROL BUTONU (KÖŞEDE) */
+        /* ÜST KISIM (SOL: YAYIN DURUMU, SAĞ: MÜZİK KONTROLÜ) */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: rgba(255,23,68,.06);
+            border: 1px solid rgba(255,23,68,.2);
+            padding: 6px 10px;
+            border-radius: 20px;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--red);
+            box-shadow: 0 0 8px var(--red);
+            animation: pulse 1.7s infinite;
+        }
+
+        @keyframes pulse {
+            50% { opacity: .35; }
+        }
+
+        .status.live { color: #ff4569; border-color: rgba(255,23,68,.4); }
+        .status.offline { color: #888; border-color: rgba(136,136,136,.2); }
+        .status.offline .status-dot { background: #888; box-shadow: none; animation: none; }
+        .status.unknown { color: #d6a94b; border-color: rgba(214,169,75,.2); }
+        .status.unknown .status-dot { background: #d6a94b; box-shadow: none; animation: none; }
+
         .audio-control {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255,23,68,.1);
-            border: 1px solid rgba(255,23,68,.3);
+            background: rgba(255,23,68,.06);
+            border: 1px solid rgba(255,23,68,.2);
             color: var(--red-soft);
             padding: 6px 12px;
             border-radius: 20px;
@@ -96,56 +132,12 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            z-index: 10;
         }
         .audio-control:hover {
             background: var(--red);
             color: white;
             border-color: var(--red);
         }
-
-        /* ANLIK CANLI DURUM BANDI */
-        .live-status-banner {
-            background: rgba(255,23,68,.08);
-            border-left: 3px solid var(--red);
-            padding: 10px 14px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            color: #ffb3c1;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .status {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            color: #ff4569;
-            font-weight: 600;
-        }
-
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--red);
-            box-shadow: 0 0 10px var(--red);
-            animation: pulse 1.7s infinite;
-        }
-
-        @keyframes pulse {
-            50% { opacity: .35; }
-        }
-
-        .status.live { color: #ff4569; }
-        .status.offline { color: #888; }
-        .status.offline .status-dot { background: #888; box-shadow: none; animation: none; }
-        .status.unknown { color: #d6a94b; }
-        .status.unknown .status-dot { background: #d6a94b; box-shadow: none; animation: none; }
 
         .header {
             text-align: center;
@@ -215,13 +207,32 @@
             line-height: 1.6;
         }
 
-        .section-title {
-            margin: 25px 0 12px;
-            color: #a99ba0;
+        /* ÖZEL ÇİZGİLİ ANA BAĞLANTILAR AYRAÇ BAŞLIĞI */
+        .divider-title {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 28px 0 14px 0;
+            color: var(--red-soft);
             font-size: 10px;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
+        }
+
+        .divider-title::before,
+        .divider-title::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(255,23,68,.3);
+        }
+
+        .divider-title::before {
+            margin-right: 12px;
+        }
+
+        .divider-title::after {
+            margin-left: 12px;
         }
 
         .menu {
@@ -230,7 +241,7 @@
             gap: 10px;
         }
 
-        /* KLAS VE DOLGUN BUTONLAR (SOLDA LOGO, SAĞDA OK) */
+        /* KLAS VE KALİTELİ SVG İKONLU BUTONLAR */
         .link-btn {
             display: flex;
             justify-content: space-between;
@@ -290,17 +301,23 @@
             z-index: 1;
         }
 
-        .arrow {
-            color: var(--red);
-            font-size: 16px;
-            font-weight: 800;
-            transition: .2s;
+        /* KALİTELİ SVG OK İKONU */
+        .arrow-svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--red);
+            stroke-width: 2.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.2s ease;
             position: relative;
             z-index: 1;
         }
 
-        .link-btn:hover .arrow {
+        .link-btn:hover .arrow-svg {
             transform: translateX(4px);
+            stroke: var(--red-soft);
         }
 
         details {
@@ -332,8 +349,8 @@
             color: white;
         }
 
-        summary .arrow { transition: transform .3s; }
-        details[open] summary .arrow { transform: rotate(90deg); }
+        summary .arrow-svg { transition: transform .3s; }
+        details[open] summary .arrow-svg { transform: rotate(90deg); }
 
         .sub-links {
             padding: 5px 12px 12px;
@@ -392,24 +409,23 @@
 
 <body>
 
-    <!-- ARKA PLAN MÜZİĞİ (LVBEL C5 - ÇÖZEZERLER) -->
+    <!-- ARKA PLAN MÜZİĞİ (LVBEL C5 - ÇÖZEMEZLER) -->
     <audio id="bgMusic" loop>
         <source src="https://cdns-preview-d.dzcdn.net/stream/c-d32616499878a87635c7553f40f2f365-3.mp3" type="audio/mp3">
     </audio>
 
-    <button class="audio-control" onclick="toggleAudio()" id="audioBtn">
-        🎵 MÜZİK: KAPALI
-    </button>
-
     <main class="container">
 
-        <!-- ANLIK CANLI DURUM BANDI -->
-        <div class="live-status-banner">
-            <span id="activityStatus">Sistem durumu kontrol ediliyor...</span>
+        <!-- ÜST BAR (SOL: CANLI YAYIN DURUMU, SAĞ: MÜZİK KONTROLÜ) -->
+        <div class="top-bar">
             <div class="status unknown" id="streamStatus">
                 <span class="status-dot"></span>
-                <span id="statusText">BEKLENİYOR</span>
+                <span id="statusText">KONTROL EDİLİYOR</span>
             </div>
+
+            <button class="audio-control" onclick="toggleAudio()" id="audioBtn">
+                🎵 MÜZİK: KAPALI
+            </button>
         </div>
 
         <header class="header">
@@ -434,7 +450,8 @@
             </p>
         </header>
 
-        <div class="section-title">// Ana bağlantılar</div>
+        <!-- ÇİZGİLİ ANA BAĞLANTILAR AYRAÇ BAŞLIĞI -->
+        <div class="divider-title">ANA BAĞLANTILAR</div>
 
         <nav class="menu">
 
@@ -443,7 +460,7 @@
                     <img src="https://www.svgrepo.com/show/331390/kick.svg" class="btn-icon" alt="Kick">
                     <span class="link-name">KICK / itsB0lg</span>
                 </div>
-                <span class="arrow">↗</span>
+                <svg class="arrow-svg" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </a>
 
             <a href="https://discord.gg/bolg" target="_blank" rel="noopener noreferrer" class="link-btn">
@@ -451,7 +468,7 @@
                     <img src="https://www.svgrepo.com/show/353655/discord-icon.svg" class="btn-icon" alt="Discord">
                     <span class="link-name">DISCORD / Community</span>
                 </div>
-                <span class="arrow">↗</span>
+                <svg class="arrow-svg" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </a>
 
             <a href="https://www.instagram.com/itsbolg" target="_blank" rel="noopener noreferrer" class="link-btn">
@@ -459,7 +476,7 @@
                     <img src="https://www.svgrepo.com/show/521711/instagram.svg" class="btn-icon" alt="Instagram">
                     <span class="link-name">INSTAGRAM / @itsbolg</span>
                 </div>
-                <span class="arrow">↗</span>
+                <svg class="arrow-svg" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </a>
 
             <a href="https://www.instagram.com/dyt.emirhanbolgun?psln=Z2EydXZreWRza3g2" target="_blank" rel="noopener noreferrer" class="link-btn">
@@ -467,7 +484,7 @@
                     <img src="https://www.svgrepo.com/show/521711/instagram.svg" class="btn-icon" alt="Instagram">
                     <span class="link-name">INSTAGRAM / @dyt.emirhanbolgun</span>
                 </div>
-                <span class="arrow">↗</span>
+                <svg class="arrow-svg" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </a>
 
             <a href="https://youtube.com/@emirhanbolgun?si=o-TwaSK8aywSzCMk" target="_blank" rel="noopener noreferrer" class="link-btn">
@@ -475,7 +492,7 @@
                     <img src="https://www.svgrepo.com/show/521319/youtube.svg" class="btn-icon" alt="YouTube">
                     <span class="link-name">YOUTUBE / Channel</span>
                 </div>
-                <span class="arrow">↗</span>
+                <svg class="arrow-svg" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </a>
 
         </nav>
@@ -483,13 +500,13 @@
         <details>
             <summary>
                 <span>+ DİĞER BAĞLANTILAR</span>
-                <span class="arrow">›</span>
+                <svg class="arrow-svg" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </summary>
 
             <div class="sub-links">
                 <a href="https://kick.com/itskocgurbuz" target="_blank" rel="noopener noreferrer" class="sub-btn">
                     KICK / itskocgurbuz
-                    <span>↗</span>
+                    <svg class="arrow-svg" style="width:14px; height:14px;" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
             </div>
         </details>
@@ -507,12 +524,11 @@
         const statusBox = document.getElementById("streamStatus");
         const statusText = document.getElementById("statusText");
         const followerCount = document.getElementById("followerCount");
-        const activityStatus = document.getElementById("activityStatus");
         const channelAvatar = document.getElementById("channelAvatar");
         const bgMusic = document.getElementById("bgMusic");
         const audioBtn = document.getElementById("audioBtn");
 
-        // MÜZİK AÇ/KAPAT
+        // MÜZİK AÇ / KAPAT
         function toggleAudio() {
             if (bgMusic.paused) {
                 bgMusic.play().then(() => {
@@ -538,13 +554,11 @@
 
                 const data = await response.json();
                 
-                // Profil Resmini Çekme
                 const profilePic = data.user?.profile_pic || data.profile_pic;
                 if (profilePic) {
                     channelAvatar.src = profilePic;
                 }
 
-                // Takipçi Sayısı
                 const count = Number(data.followers_count ?? data.data?.followers_count);
                 if (Number.isFinite(count)) {
                     followerCount.textContent = count.toLocaleString("tr-TR");
@@ -588,13 +602,10 @@
 
             if (state === "live") {
                 statusText.textContent = "CANLI YAYINDA";
-                activityStatus.textContent = "🔥 YAYINDA! Sohbet ve oyun akıyor.";
             } else if (state === "offline") {
                 statusText.textContent = "ÇEVRİMDIŞI";
-                activityStatus.textContent = "💤 Çevrimdışı - Duyuruları takip et.";
             } else {
                 statusText.textContent = "BİLİNMİYOR";
-                activityStatus.textContent = "📡 Sistem bağlantısı kuruluyor...";
             }
         }
 
@@ -607,3 +618,4 @@
 
 </body>
 </html>
+
