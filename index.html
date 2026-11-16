@@ -240,13 +240,22 @@ body {
 }
 
 .link-icon svg {
-    width: 19px;
-    height: 19px;
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.link-icon .outline-icon {
     fill: none;
     stroke: currentColor;
     stroke-width: 1.8;
     stroke-linecap: round;
     stroke-linejoin: round;
+}
+
+.link-icon .brand-icon {
+    fill: currentColor;
+    stroke: none;
 }
 
 .link-info {
@@ -340,9 +349,12 @@ body {
 
     <section class="links">
 
+        <!-- KICK -->
         <a class="link" href="https://kick.com/itsB0lg" target="_blank" rel="noopener noreferrer">
             <div class="link-icon">
-                <svg viewBox="0 0 24 24"><path d="M4 3h6v7l5-7h7l-6 8 6 10h-7l-4-7-1 1v6H4z"/></svg>
+                <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 2h7v7l5-7h7l-6 9 6 11h-7l-4-7-1 1v6H3V2z"/>
+                </svg>
             </div>
             <div class="link-info">
                 <span class="link-title">Kick</span>
@@ -351,9 +363,12 @@ body {
             <span class="arrow">↗</span>
         </a>
 
+        <!-- DISCORD -->
         <a class="link" href="https://discord.gg/bolg" target="_blank" rel="noopener noreferrer">
             <div class="link-icon">
-                <svg viewBox="0 0 24 24"><path d="M8 8c2-1 6-1 8 0l2 9c-2 2-4 2-6 2s-4 0-6-2z"/><path d="M9 13h.01M15 13h.01M8 8 7 5l4 1h2l4-1-1 3"/></svg>
+                <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19.7 5.3a18.4 18.4 0 0 0-4.5-1.4l-.6 1.2a16.5 16.5 0 0 0-5.2 0l-.6-1.2a18.4 18.4 0 0 0-4.5 1.4C1.5 9.4.7 13.4 1.1 17.4a18.3 18.3 0 0 0 5.5 2.8l1.2-1.9-1.9-.9.5-.4a13 13 0 0 0 11.2 0l.5.4-1.9.9 1.2 1.9a18.3 18.3 0 0 0 5.5-2.8c.5-4.6-.8-8.6-3.2-12.1ZM8.5 14.8c-1.1 0-2-1-2-2.2s.9-2.2 2-2.2 2 1 2 2.2-.9 2.2-2 2.2Zm7 0c-1.1 0-2-1-2-2.2s.9-2.2 2-2.2 2 1 2 2.2-.9 2.2-2 2.2Z"/>
+                </svg>
             </div>
             <div class="link-info">
                 <span class="link-title">Discord</span>
@@ -362,31 +377,45 @@ body {
             <span class="arrow">↗</span>
         </a>
 
-        <a class="link" href="https://www.instagram.com/itsbolg" target="_blank" rel="noopener noreferrer">
+        <!-- INSTAGRAM 1 -->
+        <a class="link" href="https://www.instagram.com/dyt.emirhanbolgun?psln=Z2EydXZreWRza3g2" target="_blank" rel="noopener noreferrer">
             <div class="link-icon">
-                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+                <svg class="outline-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M17.5 6.5h.01"/>
+                </svg>
             </div>
             <div class="link-info">
                 <span class="link-title">Instagram</span>
-                <span class="link-subtitle">Güncel paylaşımlar</span>
-            </div>
-            <span class="arrow">↗</span>
-        </a>
-
-        <a class="link" href="https://www.instagram.com/dyt.emirhanbolgun?psln=Z2EydXZreWRza3g2" target="_blank" rel="noopener noreferrer">
-            <div class="link-icon">
-                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
-            </div>
-            <div class="link-info">
-                <span class="link-title">Instagram · Diğer Hesap</span>
                 <span class="link-subtitle">Diğer sosyal medya hesabı</span>
             </div>
             <span class="arrow">↗</span>
         </a>
 
+        <!-- INSTAGRAM 2 -->
+        <a class="link" href="https://www.instagram.com/itsbolg" target="_blank" rel="noopener noreferrer">
+            <div class="link-icon">
+                <svg class="outline-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M17.5 6.5h.01"/>
+                </svg>
+            </div>
+            <div class="link-info">
+                <span class="link-title">Instagram · ITSBOLG</span>
+                <span class="link-subtitle">Güncel paylaşımlar</span>
+            </div>
+            <span class="arrow">↗</span>
+        </a>
+
+        <!-- YOUTUBE -->
         <a class="link" href="https://youtube.com/@emirhanbolgun?si=o-TwaSK8aywSzCMk" target="_blank" rel="noopener noreferrer">
             <div class="link-icon">
-                <svg viewBox="0 0 24 24"><path d="M22 12s0-4-1-5-3-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 3 1 9 1 8 0 9-1 1-5 1-5z"/><path d="m10 9 5 3-5 3z"/></svg>
+                <svg class="outline-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M22 12s0-4-1-5-3-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 3 1 9 1 8 0 9-1 1-5 1-5z"/>
+                    <path d="m10 9 5 3-5 3z"/>
+                </svg>
             </div>
             <div class="link-info">
                 <span class="link-title">YouTube</span>
@@ -395,13 +424,17 @@ body {
             <span class="arrow">↗</span>
         </a>
 
-        <a class="link" href="https://kick.com/itskocgurbuz" target="_blank" rel="noopener noreferrer">
+        <!-- BYNOGAME -->
+        <a class="link" href="https://donate.bynogame.com/bymade" target="_blank" rel="noopener noreferrer">
             <div class="link-icon">
-                <svg viewBox="0 0 24 24"><path d="M4 3h6v7l5-7h7l-6 8 6 10h-7l-4-7-1 1v6H4z"/></svg>
+                <svg class="outline-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 3v18M5 8h14M5 16h14"/>
+                    <circle cx="12" cy="12" r="9"/>
+                </svg>
             </div>
             <div class="link-info">
-                <span class="link-title">Kick · Alternatif Hesap</span>
-                <span class="link-subtitle">Diğer yayın hesabı</span>
+                <span class="link-title">Bynogame</span>
+                <span class="link-subtitle">Yayıncıya destek ol</span>
             </div>
             <span class="arrow">↗</span>
         </a>
@@ -420,6 +453,7 @@ body {
 
 <script>
 const channel = "itsB0lg";
+
 const avatar = document.getElementById("avatar");
 const followers = document.getElementById("followers");
 const statusText = document.getElementById("statusText");
@@ -496,16 +530,15 @@ function startMusic() {
     audio.play()
         .then(() => {
             musicStarted = true;
-            document.removeEventListener("click", startMusic);
+            document.removeEventListener("click", startMusic, true);
         })
         .catch(error => {
             console.warn("Müzik başlatılamadı:", error);
         });
 }
 
-/* İlk kullanıcı tıklamasında müziği başlatır.
-   Bağlantıların açılmasını engellemez. */
-document.addEventListener("click", startMusic);
+/* İlk dokunuşta müziği başlatır, bağlantılara müdahale etmez. */
+document.addEventListener("click", startMusic, true);
 
 loadProfile();
 loadStream();
